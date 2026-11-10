@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Potato Mods - Minecraft Java mods and Bedrock add-ons in one place.">
+<title>Potato Mods</title>
+<style>
+:root{--bg:#193522;--panel:#1b2d22;--top:#101b13;--line:#3a5140;--green:#80d84f;--pale:#c9f3a6;--white:#f3f7ef;--muted:#b8c7b9}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(130deg,#1e3b28,#14291c);color:var(--white);font:16px/1.6 system-ui,Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:rgba(15,27,18,.97);border-bottom:1px solid var(--line);padding:16px 20px;text-align:center}
+h1{margin:0;color:var(--pale);font-size:2.2rem}nav{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:8px 0}
+a{color:var(--pale)}nav a{text-decoration:none;color:var(--muted)}
+select,input,button{font:inherit;border-radius:14px;border:1px solid var(--line);padding:12px;background:var(--panel);color:var(--white)}
+main{max-width:1050px;margin:auto;padding:30px 20px 70px}.hero{text-align:center;padding:35px 0 28px}.hero h2{font-size:2.7rem;margin:8px}.hero p{color:var(--muted);font-size:1.15rem}
+.search{display:flex;gap:10px;max-width:720px;margin:24px auto}.search input{flex:1;min-width:0}.search button,.download{background:var(--green);color:#102012;border:0;font-weight:700;cursor:pointer}
+.filters{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:30px 0}
+.filters button.active{background:var(--green);color:#102012}
+.section-head{border-bottom:1px solid var(--line);padding-bottom:14px;margin:38px 0 22px}.section-head h2{font-size:2rem;margin:0}.section-head p{color:var(--muted);margin:4px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:rgba(25,43,31,.9);border:1px solid var(--line);border-radius:25px;padding:24px;display:flex;flex-direction:column;min-height:280px}
+.meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem}.tag{background:#2c4b31;color:var(--pale);padding:5px 13px;border-radius:30px}
+.card h3{font-size:1.35rem;margin:18px 0 8px}.card p{color:var(--muted);flex:1}.download{text-decoration:none;text-align:center;padding:13px;border-radius:13px;margin-top:12px}.source{text-align:center;margin-top:12px;text-decoration:none}
+footer{text-align:center;color:var(--muted);padding:30px;border-top:1px solid var(--line)}
+[hidden]{display:none!important}
+@media(max-width:520px){.hero h2{font-size:2rem}main{padding:22px 16px 50px}.search{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+<h1>Potato Mods</h1>
+<nav><a href="#java">Minecraft Java</a><a href="#bedrock">Minecraft Bedrock</a></nav>
+<label id="langLabel" for="language">Language</label>
+<select id="language" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option></select>
+</header>
+<main>
+<section class="hero">
+<h2 id="heroTitle">Potato Mods</h2>
+<p id="heroText">Discover Minecraft Java mods and Bedrock add-ons in one place. Search by name or feature.</p>
+<div class="search"><input id="search" placeholder="Search for a mod or add-on..." aria-label="Search"><button id="searchBtn">Search</button></div>
+</section>
+<div class="filters">
+<button class="active" data-filter="all" id="allBtn">All</button>
+<button data-filter="java" id="javaBtn">Java only</button>
+<button data-filter="bedrock" id="bedrockBtn">Bedrock only</button>
+</div>
+<section id="java">
+<div class="section-head"><h2 id="javaTitle">Minecraft Java</h2><p id="javaDesc">Java Edition mods</p></div>
+<div class="cards" id="javaCards"></div>
+</section>
+<section id="bedrock">
+<div class="section-head"><h2 id="bedrockTitle">Minecraft Bedrock</h2><p id="bedrockDesc">Bedrock Edition add-ons</p></div>
+<div class="cards" id="bedrockCards"></div>
+</section>
+</main>
+<footer id="footerText">Potato Mods is a community directory. Downloads are provided by each project’s original page. Check compatibility and permissions before installing.</footer>
+<script>
+const items = [
+{type:"java",name:"Sodium",cat:"Performance",desc:"Improves rendering performance and frame rates.",url:"https://modrinth.com/mod/sodium"},
+{type:"java",name:"Iris Shaders",cat:"Graphics",desc:"Adds support for shader packs.",url:"https://modrinth.com/mod/iris"},
+{type:"java",name:"Lithium",cat:"Performance",desc:"Optimizes many game systems.",url:"https://modrinth.com/mod/lithium"},
+{type:"java",name:"FerriteCore",cat:"Performance",desc:"Reduces memory usage.",url:"https://modrinth.com/mod/ferrite-core"},
+{type:"java",name:"Mod Menu",cat:"Tools",desc:"View and manage installed mods.",url:"https://modrinth.com/mod/modmenu"},
+{type:"java",name:"Jade",cat:"Tools",desc:"Shows information about blocks and entities.",url:"https://modrinth.com/mod/jade"},
+{type:"java",name:"AppleSkin",cat:"Utility",desc:"Displays useful food and saturation information.",url:"https://modrinth.com/mod/appleskin"},
+{type:"java",name:"EMI",cat:"Utility",desc:"Browse items and recipes in-game.",url:"https://modrinth.com/mod/emi"},
+{type:"java",name:"JEI",cat:"Utility",desc:"A recipe and item viewing tool.",url:"https://www.curseforge.com/minecraft/mc-mods/jei"},
+{type:"java",name:"Xaero's Minimap",cat:"Maps",desc:"Adds a minimap with useful navigation features.",url:"https://modrinth.com/mod/xaeros-minimap"},
+{type:"java",name:"Xaero's World Map",cat:"Maps",desc:"Explore a map of your Minecraft world.",url:"https://modrinth.com/mod/xaeros-world-map"},
+{type:"java",name:"Create",cat:"Building",desc:"Build moving machines and mechanical systems.",url:"https://modrinth.com/mod/create"},
+{type:"java",name:"Terralith",cat:"World Generation",desc:"Adds many new Overworld biomes.",url:"https://modrinth.com/datapack/terralith"},
+{type:"java",name:"Biomes O' Plenty",cat:"World Generation",desc:"Expands world generation with new biomes.",url:"https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty"},
+{type:"java",name:"Farmer's Delight",cat:"Food",desc:"Adds cooking, crops and food-related features.",url:"https://modrinth.com/mod/farmers-delight"},
+{type:"java",name:"Waystones",cat:"Travel",desc:"Adds waystones for convenient travel.",url:"https://www.curseforge.com/minecraft/mc-mods/waystones"},
+{type:"java",name:"Supplementaries",cat:"Decoration",desc:"Adds decorative and practical building items.",url:"https://modrinth.com/mod/supplementaries"},
+{type:"java",name:"YUNG's Better Dungeons",cat:"Adventure",desc:"Overhauls dungeon structures.",url:"https://www.curseforge.com/minecraft/mc-mods/yungs-better-dungeons"},
+{type:"java",name:"ImmediatelyFast",cat:"Performance",desc:"Improves rendering performance.",url:"https://modrinth.com/mod/immediatelyfast"},
+{type:"java",name:"Entity Culling",cat:"Performance",desc:"Avoids rendering entities that cannot be seen.",url:"https://modrinth.com/mod/entityculling"},
+{type:"bedrock",name:"Ore UI",cat:"Utility",desc:"Browse Bedrock add-ons and resource packs.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Marketplace Add-ons",cat:"Add-ons",desc:"Explore official add-ons for Minecraft Bedrock.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Texture Packs",cat:"Graphics",desc:"Find resource packs for Bedrock Edition.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"World Templates",cat:"Worlds",desc:"Discover new worlds and experiences.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Skin Packs",cat:"Skins",desc:"Explore character skin packs.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Furniture Add-ons",cat:"Building",desc:"Search for furniture add-ons in the Marketplace.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Mob Add-ons",cat:"Mobs",desc:"Find add-ons that add or change creatures.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Adventure Add-ons",cat:"Adventure",desc:"Discover new adventure experiences.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Survival Add-ons",cat:"Survival",desc:"Find add-ons for survival gameplay.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Building Add-ons",cat:"Building",desc:"Explore tools and content for builders.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Magic Add-ons",cat:"Magic",desc:"Search magical content for Bedrock.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Vehicle Add-ons",cat:"Vehicles",desc:"Find vehicle content for Bedrock Edition.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Tools Add-ons",cat:"Tools",desc:"Explore extra tools and utilities.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Nature Add-ons",cat:"Nature",desc:"Discover nature-themed Bedrock content.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Ore Boost V2",cat:"Mining",desc:"Browse mining add-ons for Bedrock Edition.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Effortless Building",cat:"Building",desc:"Browse building add-ons for Bedrock Edition.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Animals Add-ons",cat:"Animals",desc:"Find animal-themed add-ons.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Decoration Add-ons",cat:"Decoration",desc:"Find decorative content for your worlds.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Food Add-ons",cat:"Food",desc:"Discover food and farming content.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"Utility Add-ons",cat:"Utility",desc:"Explore useful Bedrock add-ons.",url:"https://www.minecraft.net/en-us/marketplace"},
+{type:"bedrock",name:"World Generation Add-ons",cat:"Worlds",desc:"Find new world and terrain experiences.",url:"https://www.minecraft.net/en-us/marketplace"}
+];
+const words={
+en:{lang:"Language",hero:"Discover Minecraft Java mods and Bedrock add-ons in one place. Search by name or feature.",search:"Search for a mod or add-on...",btn:"Search",all:"All",java:"Java only",bedrock:"Bedrock only",jd:"Java Edition mods",bd:"Bedrock Edition add-ons",download:"Open download page",source:"Official project page",foot:"Potato Mods is a community directory. Downloads are provided by each project’s original page. Check compatibility and permissions before installing."},
+ar:{lang:"اللغة",hero:"اكتشف مودات Java وإضافات Bedrock في مكان واحد. ابحث بالاسم أو الوظيفة.",search:"ابحث عن مود أو إضافة...",btn:"بحث",all:"الكل",java:"Java فقط",bedrock:"Bedrock فقط",jd:"مودات إصدار Java",bd:"إضافات إصدار Bedrock",download:"فتح صفحة التحميل",source:"صفحة المشروع الرسمية",foot:"Potato Mods دليل مجتمعي. تتم عمليات التنزيل من صفحات المشاريع الأصلية. تحقق من التوافق والأذونات قبل التثبيت."},
+fr:{lang:"Langue",hero:"Découvrez les mods Minecraft Java et les add-ons Bedrock au même endroit. Recherchez par nom ou fonction.",search:"Rechercher un mod ou add-on...",btn:"Rechercher",all:"Tout",java:"Java uniquement",bedrock:"Bedrock uniquement",jd:"Mods de l’édition Java",bd:"Add-ons de l’édition Bedrock",download:"Ouvrir la page de téléchargement",source:"Page officielle du projet",foot:"Potato Mods est un répertoire communautaire. Les téléchargements sont fournis par les pages originales des projets. Vérifiez la compatibilité et les autorisations avant l’installation."}
+};
+let filter="all";
+function render(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ for(const type of ["java","bedrock"]){
+  const root=document.getElementById(type+"Cards");root.innerHTML="";
+  items.filter(x=>x.type===type && (filter==="all"||filter===type) && (!q||(x.name+" "+x.cat+" "+x.desc).toLowerCase().includes(q))).forEach(x=>{
+   const card=document.createElement("article");card.className="card";
+   card.innerHTML=`<div class="meta"><span class="tag"></span><span>${type.toUpperCase()}</span></div><h3></h3><p></p><a class="download" target="_blank" rel="noopener noreferrer"></a><a class="source" target="_blank" rel="noopener noreferrer"></a>`;
+   card.querySelector(".tag").textContent=x.cat;card.querySelector("h3").textContent=x.name;card.querySelector("p").textContent=x.desc;
+   card.querySelector(".download").href=x.url;card.querySelector(".source").href=x.url;
+   card.querySelector(".download").textContent=words[document.documentElement.lang].download;
+   card.querySelector(".source").textContent=words[document.documentElement.lang].source;root.appendChild(card);
+  });
+  document.getElementById(type).hidden=filter!=="all"&&filter!==type;
+ }
+}
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));render()}));
+document.getElementById("search").addEventListener("input",render);document.getElementById("searchBtn").addEventListener("click",render);
+document.getElementById("language").addEventListener("change",e=>{
+ const lang=e.target.value,w=words[lang];document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ document.getElementById("langLabel").textContent=w.lang;document.getElementById("heroText").textContent=w.hero;
+ document.getElementById("search").placeholder=w.search;document.getElementById("searchBtn").textContent=w.btn;
+ document.getElementById("allBtn").textContent=w.all;document.getElementById("javaBtn").textContent=w.java;document.getElementById("bedrockBtn").textContent=w.bedrock;
+ document.getElementById("javaDesc").textContent=w.jd;document.getElementById("bedrockDesc").textContent=w.bd;document.getElementById("footerText").textContent=w.foot;render();
+});
+render();
+</script>
+</body></html>
