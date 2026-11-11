@@ -130,4 +130,132 @@ document.getElementById("language").addEventListener("change",e=>{
 });
 render();
 </script>
+ <style>
+.extra-section{margin:45px 0}
+.extra-section h2{color:#c9f3a6;border-bottom:1px solid #3a5140;padding-bottom:10px}
+.extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.extra-card{background:#1b2d22;border:1px solid #3a5140;border-radius:18px;padding:20px}
+.extra-card h3{color:#c9f3a6}
+.extra-card p{color:#b8c7b9}
+.extra-card a{display:inline-block;margin:5px;color:#c9f3a6}
+.extra-button{display:inline-block;background:#80d84f;color:#102012;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:bold}
+#potatoWelcome{position:fixed;inset:0;background:#000b;z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+#potatoWelcome .welcome-box{background:#193522;border:1px solid #80d84f;border-radius:20px;padding:25px;max-width:450px;text-align:center}
+#potatoWelcome button{background:#80d84f;color:#102012;border:0;padding:12px 25px;border-radius:10px;font-weight:bold}
+</style>
+
+<section class="extra-section" id="news">
+<h2>📰 أخبار Minecraft</h2>
+<div class="extra-grid">
+<div class="extra-card">
+<h3>Java Edition</h3>
+<p>قسم أخبار وتحديثات Minecraft Java.</p>
+<a href="https://www.minecraft.net/en-us/articles">أخبار Minecraft الرسمية</a>
+</div>
+<div class="extra-card">
+<h3>Bedrock Edition</h3>
+<p>قسم أخبار وتحديثات Minecraft Bedrock.</p>
+<a href="https://www.minecraft.net/en-us/updates">آخر التحديثات الرسمية</a>
+</div>
+</div>
+</section>
+
+<section class="extra-section" id="official">
+<h2>🎮 تحميل Minecraft الرسمي</h2>
+<div class="extra-grid">
+<div class="extra-card">
+<h3>Android</h3>
+<p>صفحة Minecraft الرسمية على Google Play.</p>
+<a class="extra-button" href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">Google Play</a>
+</div>
+<div class="extra-card">
+<h3>Windows</h3>
+<p>تحميل Minecraft Launcher الرسمي.</p>
+<a class="extra-button" href="https://www.minecraft.net/download" target="_blank">تحميل Windows</a>
+</div>
+<div class="extra-card">
+<h3>Xbox</h3>
+<p>صفحة Minecraft الرسمية على Xbox.</p>
+<a class="extra-button" href="https://www.xbox.com/games/store/minecraft/9MVXMVT8ZKWC" target="_blank">Xbox Store</a>
+</div>
+</div>
+</section>
+
+<section class="extra-section" id="community">
+<h2>👥 مجتمع Potato Mods</h2>
+<div class="extra-grid">
+<div class="extra-card">
+<h3>إرسال مودات المجتمع</h3>
+<p>قريباً: سيتمكن الأعضاء من اقتراح موداتهم لمراجعتها قبل نشرها.</p>
+</div>
+<div class="extra-card">
+<h3>⭐ النقاط والمكافآت</h3>
+<p>قريباً: نظام نقاط وشارات للأعضاء.</p>
+</div>
+</div>
+</section>
+
+<section class="extra-section" id="resources">
+<h2>🌐 مواقع Minecraft المفيدة</h2>
+<div class="extra-grid">
+<div class="extra-card">
+<h3>Modrinth</h3>
+<a href="https://modrinth.com/" target="_blank">زيارة الموقع</a>
+</div>
+<div class="extra-card">
+<h3>CurseForge</h3>
+<a href="https://www.curseforge.com/minecraft" target="_blank">زيارة الموقع</a>
+</div>
+<div class="extra-card">
+<h3>MCPEDL</h3>
+<a href="https://mcpedl.org/" target="_blank">زيارة الموقع</a>
+</div>
+<div class="extra-card">
+<h3>Planet Minecraft</h3>
+<a href="https://www.planetminecraft.com/" target="_blank">زيارة الموقع</a>
+</div>
+<div class="extra-card">
+<h3>Minecraft الرسمي</h3>
+<a href="https://www.minecraft.net/" target="_blank">زيارة الموقع</a>
+</div>
+</div>
+</section>
+
+<section class="extra-section" id="roadmap">
+<h2>🗺️ خارطة تطوير Potato Mods</h2>
+<div class="extra-grid">
+<div class="extra-card">
+<h3>المرحلة الأولى</h3>
+<p>إضافة الأخبار والمواقع المفيدة والتحميل الرسمي.</p>
+</div>
+<div class="extra-card">
+<h3>المرحلة الثانية</h3>
+<p>إنشاء حسابات الأعضاء ونظام النقاط.</p>
+</div>
+<div class="extra-card">
+<h3>المرحلة الثالثة</h3>
+<p>استقبال مودات المجتمع ومراجعتها.</p>
+</div>
+<div class="extra-card">
+<h3>المرحلة الرابعة</h3>
+<p>تطوير الإشعارات والتحديثات التلقائية.</p>
+</div>
+</div>
+</section>
+
+<div id="potatoWelcome">
+<div class="welcome-box">
+<h2>🥔 مرحباً بك في Potato Mods!</h2>
+<p>نعمل على تطوير الموقع وإضافة الأخبار والمكافآت ومواقع Minecraft المفيدة.</p>
+<p>تابع خارطة التطوير لمعرفة الميزات القادمة.</p>
+<button onclick="document.getElementById('potatoWelcome').style.display='none'">متابعة الموقع</button>
+</div>
+</div>
+
+<script>
+if(!sessionStorage.getItem("potatoWelcomeSeen")){
+document.getElementById("potatoWelcome").style.display="flex";
+sessionStorage.setItem("potatoWelcomeSeen","yes");
+}
+</script>
 </body></html>
