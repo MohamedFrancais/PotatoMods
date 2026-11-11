@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Potato Mods — دليل مودات Minecraft Java وإضافات Bedrock وأخبار التحديثات.">
+<title>Potato Mods | المودات والإضافات</title>
+<style>
+:root{--bg:#101b16;--panel:#17271f;--panel2:#20372b;--line:#355744;--green:#9be36c;--mint:#d8f6c4;--text:#f3f8f1;--muted:#b7c9bb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font:16px/1.7 system-ui,Tahoma,Arial;background:#101b16}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(8,20,13,.72),rgba(8,20,13,.94)),url("https://feedback.minecraft.net/hc/article_attachments/49852828560653") center/cover fixed}
+a{color:var(--green)}header{position:sticky;top:0;z-index:10;background:#0c1712eF;border-bottom:1px solid var(--line);backdrop-filter:blur(12px);padding:12px 5vw;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{font-size:1.55rem;font-weight:900;color:var(--mint)}nav{display:flex;gap:16px;flex-wrap:wrap}nav a{text-decoration:none;color:var(--text)}
+main{width:min(1180px,92%);margin:auto}.hero{padding:70px 0 42px;text-align:center}.hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.15;margin:0;color:var(--mint);text-shadow:0 4px 25px #000}.hero p{max-width:760px;margin:18px auto;color:#e0eadf;font-size:1.1rem}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.btn{display:inline-block;background:var(--green);color:#102016;padding:11px 18px;border-radius:12px;text-decoration:none;font-weight:800;border:0;cursor:pointer}.btn.alt{background:#172a20;color:var(--mint);border:1px solid var(--line)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.tools input,.tools select{background:#132219;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit}.tools input{flex:1;min-width:220px}
+.section{margin:45px 0}.section h2{font-size:2rem;color:var(--mint);margin-bottom:4px}.lead{color:var(--muted);margin-top:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
+.card{background:#14251deF;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 35px #0005;transition:.2s}.card:hover{transform:translateY(-4px);border-color:var(--green)}
+.cover{height:165px;background:linear-gradient(135deg,#294b35,#17291f);display:grid;place-items:center;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover}.cover span{font-size:2.7rem;color:var(--green)}
+.cardbody{padding:17px;display:flex;flex-direction:column;flex:1}.tag{color:var(--green);font-size:.82rem}.card h3{margin:5px 0;font-size:1.3rem}.card p{color:var(--muted);margin:0 0 14px;flex:1}.card .btn{width:100%;text-align:center}
+.note{border:1px solid var(--line);background:#122219eF;border-radius:16px;padding:18px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);padding:35px 15px;border-top:1px solid var(--line);margin-top:60px}
+@media(max-width:650px){header{justify-content:center}nav{justify-content:center}.hero{padding:45px 0 25px}}
+</style></head>
+<body>
+<header><a class="logo" href="index.html" style="text-decoration:none">Potato Mods</a><nav><a href="#java">مودات Java</a><a href="#bedrock">إضافات Bedrock</a><a href="news.html">الأخبار والتحديثات</a></nav></header>
+<main>
+<section class="hero"><h1>عالم Minecraft، في مكان واحد</h1><p>اكتشف مودات Java وإضافات Bedrock، شاهد الصور من صفحات المشاريع الأصلية، تعرّف على المميزات، ثم انتقل إلى مصدر التحميل الرسمي للمشروع.</p><div class="actions"><a class="btn" href="#java">اكتشف المودات</a><a class="btn alt" href="news.html">آخر أخبار Minecraft</a></div></section>
+<div class="tools"><input id="search" placeholder="ابحث عن مود أو إضافة..."><select id="edition"><option value="all">كل الإصدارات</option><option value="java">Java فقط</option><option value="bedrock">Bedrock فقط</option></select></div>
+<section class="section" id="java"><h2>مودات Minecraft Java</h2><p class="lead">أدوات أداء ورسومات وبناء واستكشاف. افتح صفحة المشروع لمعرفة الإصدارات المتوافقة والملفات المتاحة.</p><div class="grid" id="javaGrid"></div></section>
+<section class="section" id="bedrock"><h2>إضافات Minecraft Bedrock</h2><p class="lead">إضافات حقيقية من صفحات منشئيها. تحقق من رقم إصدار لعبتك قبل التثبيت.</p><div class="grid" id="bedrockGrid"></div></section>
+<section class="section"><div class="note"><b style="color:var(--mint)">ملاحظة مهمة:</b> Potato Mods دليل مستقل؛ لا نستضيف ملفات المودات ولا نملكها. روابط التحميل تفتح صفحات أصحاب المشاريع. صور المودات تُحمّل من معرض المشروع الأصلي عندما يتيح المصدر ذلك.</div></section>
+</main><footer>© 2026 Potato Mods — موقع مجتمعي مستقل وغير تابع لـ Mojang أو Microsoft.</footer>
+<script>
+const mods=[
+{type:"java",name:"Sodium",cat:"الأداء",desc:"يحسّن طريقة عرض العالم لرفع سلاسة اللعب ومعدل الإطارات.",slug:"sodium",url:"https://modrinth.com/mod/sodium",cf:"https://www.curseforge.com/minecraft/mc-mods/sodium"},
+{type:"java",name:"Iris Shaders",cat:"الرسومات",desc:"يضيف دعماً لحزم Shaders المتوافقة مع Minecraft Java.",slug:"iris",url:"https://modrinth.com/mod/iris",cf:"https://www.curseforge.com/minecraft/mc-mods/irisshaders"},
+{type:"java",name:"Lithium",cat:"الأداء",desc:"تحسينات لأجزاء عديدة من محرك اللعبة دون تغيير أسلوب اللعب.",slug:"lithium",url:"https://modrinth.com/mod/lithium",cf:"https://www.curseforge.com/minecraft/mc-mods/lithium"},
+{type:"java",name:"FerriteCore",cat:"الأداء",desc:"يساعد على تقليل استهلاك الذاكرة في كثير من الحالات.",slug:"ferrite-core",url:"https://modrinth.com/mod/ferrite-core",cf:"https://www.curseforge.com/minecraft/mc-mods/ferritecore"},
+{type:"java",name:"Jade",cat:"المعلومات",desc:"يعرض معلومات مفيدة عن الكتل والكائنات التي تنظر إليها.",slug:"jade",url:"https://modrinth.com/mod/jade",cf:"https://www.curseforge.com/minecraft/mc-mods/jade"},
+{type:"java",name:"AppleSkin",cat:"واجهة اللعب",desc:"يعرض معلومات الجوع والتشبّع وقيمة الطعام.",slug:"appleskin",url:"https://modrinth.com/mod/appleskin",cf:"https://www.curseforge.com/minecraft/mc-mods/appleskin"},
+{type:"java",name:"EMI",cat:"الوصفات",desc:"يساعدك على البحث عن العناصر والوصفات من داخل اللعبة.",slug:"emi",url:"https://modrinth.com/mod/emi",cf:"https://www.curseforge.com/minecraft/mc-mods/emi"},
+{type:"java",name:"Xaero's Minimap",cat:"الخرائط",desc:"خريطة مصغّرة لمساعدتك على معرفة الاتجاهات والأماكن.",slug:"xaeros-minimap",url:"https://modrinth.com/mod/xaeros-minimap",cf:"https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap"},
+{type:"java",name:"Create",cat:"البناء والآلات",desc:"أدوات ميكانيكية لبناء آلات وأنظمة متحركة داخل عالمك.",slug:"create",url:"https://modrinth.com/mod/create",cf:"https://www.curseforge.com/minecraft/mc-mods/create"},
+{type:"java",name:"Terralith",cat:"توليد العالم",desc:"يوسّع تنوع تضاريس ومناطق العالم العادي.",slug:"terralith",url:"https://modrinth.com/datapack/terralith",cf:"https://www.curseforge.com/minecraft/mc-mods/terralith"},
+{type:"java",name:"Farmer's Delight",cat:"الزراعة والطعام",desc:"يضيف أنظمة طبخ ومحاصيل وأدوات مرتبطة بالطعام.",slug:"farmers-delight",url:"https://modrinth.com/mod/farmers-delight",cf:"https://www.curseforge.com/minecraft/mc-mods/farmers-delight"},
+{type:"java",name:"Waystones",cat:"التنقل",desc:"يضيف أحجار انتقال تساعدك على التنقل بين المواقع.",slug:"waystones",url:"https://www.curseforge.com/minecraft/mc-mods/waystones",cf:"https://modrinth.com/mod/waystones"},
+{type:"bedrock",name:"Better on Bedrock",cat:"توسعة أسلوب اللعب",desc:"مشروع توسعة كبير يضيف محتوى وتدرجاً ومناطق وعناصر مع الحفاظ على طابع Bedrock.",url:"https://www.curseforge.com/minecraft-bedrock/addons/better-on-bedrock",alt:"https://mcpedl.com/better-on-bedrock/"},
+{type:"bedrock",name:"GraveStones",cat:"البقاء",desc:"يضع علامة قبر تحتفظ بأغراض اللاعب بعد الوفاة لاستعادتها لاحقاً. راجع متطلبات العالم والتوافق.",image:"https://media.forgecdn.net/attachments/1099/308/gravestones-png.png",url:"https://mcpedl.com/grave-add-on/",alt:"https://www.curseforge.com/minecraft-bedrock/addons/gravestones"},
+{type:"bedrock",name:"Gravestone Addon Plus",cat:"البقاء",desc:"إضافة أخرى لنظام القبور واستعادة الأغراض؛ تحقق من توافق ملفها مع إصدارك.",url:"https://www.curseforge.com/minecraft-bedrock/addons/gravestone-addon-plus"},
+
+];
+const grid=(m)=>{const el=document.createElement("article");el.className="card";const cover=document.createElement("div");cover.className="cover";if(m.slug){const im=document.createElement("img");im.alt="معرض صور "+m.name;im.loading="lazy";im.dataset.slug=m.slug;cover.append(im)}else if(m.image){const im=document.createElement("img");im.src=m.image;im.alt="صورة "+m.name;im.loading="lazy";im.onerror=()=>{im.remove();cover.innerHTML="<span>MC</span>"};cover.append(im)}else cover.innerHTML="<span>MC</span>";const b=document.createElement("div");b.className="cardbody";b.innerHTML=`<span class="tag">${m.cat} · ${m.type==="java"?"Java":"Bedrock"}</span><h3></h3><p></p><a class="btn detail" href="#">صفحة Potato Mods</a><a class="btn alt source" target="_blank" rel="noopener" style="margin-top:8px;text-align:center">صفحة المشروع الأصلية</a>`;b.querySelector("h3").textContent=m.name;b.querySelector("p").textContent=m.desc;const detail=b.querySelector(".detail");detail.href="mod.html?type="+m.type+"&name="+encodeURIComponent(m.name)+"&url="+encodeURIComponent(m.url)+"&desc="+encodeURIComponent(m.desc)+(m.slug?"&slug="+encodeURIComponent(m.slug):"")+(m.cf?"&cf="+encodeURIComponent(m.cf):"")+(m.image?"&image="+encodeURIComponent(m.image):"");b.querySelector(".source").href=m.url; if(m.alt){const a=document.createElement("a");a.href=m.alt;a.target="_blank";a.rel="noopener";a.textContent="مصدر إضافي";a.style.marginTop="8px";b.append(a)}el.append(cover,b);return el};
+function render(){const q=document.getElementById("search").value.toLowerCase(),t=document.getElementById("edition").value;for(const type of ["java","bedrock"]){const g=document.getElementById(type+"Grid");g.innerHTML="";mods.filter(m=>m.type===type&&(t==="all"||t===type)&&(!q||(m.name+" "+m.cat+" "+m.desc).toLowerCase().includes(q))).forEach(m=>g.append(grid(m)));document.getElementById(type).hidden=t!=="all"&&t!==type}}
+document.getElementById("search").addEventListener("input",render);document.getElementById("edition").addEventListener("change",render);render();
+// Pull official project icons and image galleries from Modrinth's public project API.
+mods.filter(m=>m.slug).forEach(async m=>{try{const r=await fetch("https://api.modrinth.com/v2/project/"+m.slug);if(!r.ok)return;const d=await r.json();const cards=[...document.querySelectorAll("img[data-slug]")].filter(x=>x.dataset.slug===m.slug);cards.forEach(img=>{img.src=(d.gallery&&d.gallery[0]&&d.gallery[0].url)||d.icon_url||"";img.onerror=()=>{img.src=d.icon_url||""}})}catch(e){}});
+</script></body></html>
