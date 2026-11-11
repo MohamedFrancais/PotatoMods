@@ -1,261 +1,671 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Potato Mods - Minecraft Java mods and Bedrock add-ons in one place.">
-<title>Potato Mods</title>
+<meta name="description" content="Potato Mods - Minecraft Java mods, Bedrock add-ons, news and resources.">
+<meta name="theme-color" content="#193522">
+<title>Potato Mods | Minecraft Mods & Add-ons</title>
+
 <style>
-:root{--bg:#193522;--panel:#1b2d22;--top:#101b13;--line:#3a5140;--green:#80d84f;--pale:#c9f3a6;--white:#f3f7ef;--muted:#b8c7b9}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(130deg,#1e3b28,#14291c);color:var(--white);font:16px/1.6 system-ui,Arial,sans-serif}
-header{position:sticky;top:0;z-index:5;background:rgba(15,27,18,.97);border-bottom:1px solid var(--line);padding:16px 20px;text-align:center}
-h1{margin:0;color:var(--pale);font-size:2.2rem}nav{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:8px 0}
-a{color:var(--pale)}nav a{text-decoration:none;color:var(--muted)}
-select,input,button{font:inherit;border-radius:14px;border:1px solid var(--line);padding:12px;background:var(--panel);color:var(--white)}
-main{max-width:1050px;margin:auto;padding:30px 20px 70px}.hero{text-align:center;padding:35px 0 28px}.hero h2{font-size:2.7rem;margin:8px}.hero p{color:var(--muted);font-size:1.15rem}
-.search{display:flex;gap:10px;max-width:720px;margin:24px auto}.search input{flex:1;min-width:0}.search button,.download{background:var(--green);color:#102012;border:0;font-weight:700;cursor:pointer}
-.filters{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:30px 0}
-.filters button.active{background:var(--green);color:#102012}
-.section-head{border-bottom:1px solid var(--line);padding-bottom:14px;margin:38px 0 22px}.section-head h2{font-size:2rem;margin:0}.section-head p{color:var(--muted);margin:4px 0}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-.card{background:rgba(25,43,31,.9);border:1px solid var(--line);border-radius:25px;padding:24px;display:flex;flex-direction:column;min-height:280px}
-.meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.9rem}.tag{background:#2c4b31;color:var(--pale);padding:5px 13px;border-radius:30px}
-.card h3{font-size:1.35rem;margin:18px 0 8px}.card p{color:var(--muted);flex:1}.download{text-decoration:none;text-align:center;padding:13px;border-radius:13px;margin-top:12px}.source{text-align:center;margin-top:12px;text-decoration:none}
-footer{text-align:center;color:var(--muted);padding:30px;border-top:1px solid var(--line)}
-[hidden]{display:none!important}
-@media(max-width:520px){.hero h2{font-size:2rem}main{padding:22px 16px 50px}.search{flex-direction:column}}
+:root{
+  --bg:#101c15;
+  --panel:#1b3022;
+  --panel2:#223b2a;
+  --green:#65d681;
+  --green2:#39a957;
+  --text:#f2f8f3;
+  --muted:#b4c8b8;
+  --border:#355440;
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+button,select,input{font:inherit}
+button{cursor:pointer}
+.container{width:min(1150px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:10;
+  background:#14271b;
+  border-bottom:1px solid var(--border);
+}
+.nav{
+  min-height:72px;display:flex;align-items:center;
+  justify-content:space-between;gap:15px;flex-wrap:wrap;
+  padding:12px 0;
+}
+.brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:bold;color:white}
+.brand-icon{
+  width:42px;height:42px;border-radius:13px;
+  background:linear-gradient(145deg,#79e895,#26964a);
+  display:grid;place-items:center;color:#102016;font-size:24px;
+}
+nav{display:flex;gap:15px;flex-wrap:wrap;align-items:center}
+nav a{color:#e2f1e5;font-size:14px}
+.lang{
+  background:var(--panel2);color:white;border:1px solid var(--border);
+  border-radius:10px;padding:9px;
+}
+.hero{
+  padding:65px 0 45px;text-align:center;
+  background:radial-gradient(ellipse at top,#285337 0%,#172b1d 48%,var(--bg) 100%);
+}
+.hero h1{font-size:clamp(34px,6vw,58px);margin:0 0 12px}
+.hero h1 span{color:var(--green)}
+.hero p{color:var(--muted);max-width:720px;margin:0 auto 25px}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;border:0;border-radius:12px;
+  padding:11px 18px;background:var(--green2);
+  color:white;font-weight:bold;
+}
+.btn.secondary{background:var(--panel2);border:1px solid var(--border)}
+.btn:hover{filter:brightness(1.12);text-decoration:none}
+.search-area{margin:25px auto 0;max-width:650px}
+#search{
+  width:100%;padding:15px 18px;border-radius:14px;
+  border:1px solid var(--border);background:#102016;color:white;
+  outline:none;
+}
+.filters{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:15px}
+.filter{
+  padding:8px 16px;border-radius:30px;border:1px solid var(--border);
+  background:var(--panel);color:white;
+}
+.filter.active{background:var(--green2);border-color:var(--green2)}
+section{padding:42px 0}
+.section-title{font-size:27px;margin:0 0 7px}
+.section-sub{color:var(--muted);margin:0 0 22px}
+.cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
+  gap:17px;
+}
+.card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:.2s;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--green)}
+.card-img{
+  width:100%;height:155px;object-fit:cover;
+  background:#294531;display:block;
+}
+.card-body{padding:15px}
+.card h3{margin:0 0 7px;font-size:18px}
+.card p{color:var(--muted);font-size:14px;min-height:45px;margin:0 0 13px}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.small-btn{
+  display:inline-block;background:#2d7542;color:white;
+  padding:7px 11px;border-radius:9px;font-size:13px;
+}
+.small-btn.alt{background:#304638;border:1px solid var(--border)}
+.loading{color:var(--muted);padding:20px;text-align:center}
+.notice{
+  background:#253c2a;border:1px solid #527b57;
+  border-radius:14px;padding:15px;color:#d8f2dd;
+}
+.split{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+.info-box{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px;
+}
+.info-box h3{margin-top:0}
+.partner-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:15px;
+}
+.partner{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:16px;padding:22px;text-align:center;
+}
+.partner-logo{
+  min-height:75px;display:grid;place-items:center;
+  font-size:27px;font-weight:bold;letter-spacing:-1px;
+}
+.partner small{color:var(--muted)}
+footer{
+  border-top:1px solid var(--border);
+  background:#14271b;padding:30px 0;text-align:center;color:var(--muted);
+}
+footer p{margin:6px}
+.modal{
+  position:fixed;inset:0;background:#000b;z-index:30;
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.modal.show{display:flex}
+.modal-box{
+  width:min(470px,100%);background:#1b3022;
+  border:1px solid var(--green);border-radius:20px;
+  padding:25px;text-align:center;
+}
+.modal-box h2{color:var(--green)}
+.close{margin-top:15px}
+.empty{display:none;text-align:center;color:var(--muted);padding:25px}
+[dir="ltr"] nav{direction:ltr}
+@media(max-width:650px){
+  .nav{justify-content:center}
+  nav{justify-content:center}
+  .hero{padding-top:45px}
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>Potato Mods</h1>
-<nav><a href="#java">Minecraft Java</a><a href="#bedrock">Minecraft Bedrock</a></nav>
-<label id="langLabel" for="language">Language</label>
-<select id="language" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option></select>
+  <div class="container nav">
+    <a class="brand" href="#">
+      <span class="brand-icon">🥔</span>
+      <span>Potato Mods</span>
+    </a>
+
+    <nav>
+      <a href="#java" data-i18n="navJava">مودات Java</a>
+      <a href="#bedrock" data-i18n="navBedrock">إضافات Bedrock</a>
+      <a href="#news" data-i18n="navNews">الأخبار</a>
+      <a href="#partners" data-i18n="navPartners">شركاؤنا</a>
+      <a href="#resources" data-i18n="navResources">المصادر</a>
+    </nav>
+
+    <select class="lang" id="language" aria-label="Language">
+      <option value="ar">🇸🇦 العربية</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="fr">🇫🇷 Français</option>
+    </select>
+  </div>
 </header>
+
 <main>
 <section class="hero">
-<h2 id="heroTitle">Potato Mods</h2>
-<p id="heroText">Discover Minecraft Java mods and Bedrock add-ons in one place. Search by name or feature.</p>
-<div class="search"><input id="search" placeholder="Search for a mod or add-on..." aria-label="Search"><button id="searchBtn">Search</button></div>
+  <div class="container">
+    <h1><span>Potato</span> Mods 🥔</h1>
+    <p data-i18n="heroText">
+      اكتشف أفضل مودات Minecraft Java وإضافات Bedrock والأخبار والمصادر في مكان واحد.
+    </p>
+    <div class="hero-actions">
+      <a class="btn" href="#java" data-i18n="explore">اكتشف المودات</a>
+      <a class="btn secondary" href="#news" data-i18n="latestNews">آخر الأخبار</a>
+    </div>
+
+    <div class="search-area">
+      <input id="search" type="search" placeholder="ابحث عن مود أو إضافة..." data-i18n-placeholder="searchPlaceholder">
+      <div class="filters">
+        <button class="filter active" data-filter="all" data-i18n="all">الكل</button>
+        <button class="filter" data-filter="java">Java</button>
+        <button class="filter" data-filter="bedrock">Bedrock</button>
+      </div>
+    </div>
+  </div>
 </section>
-<div class="filters">
-<button class="active" data-filter="all" id="allBtn">All</button>
-<button data-filter="java" id="javaBtn">Java only</button>
-<button data-filter="bedrock" id="bedrockBtn">Bedrock only</button>
-</div>
+
 <section id="java">
-<div class="section-head"><h2 id="javaTitle">Minecraft Java</h2><p id="javaDesc">Java Edition mods</p></div>
-<div class="cards" id="javaCards"></div>
+  <div class="container">
+    <h2 class="section-title" data-i18n="javaTitle">مودات Minecraft Java</h2>
+    <p class="section-sub" data-i18n="javaSub">مشاريع حقيقية من Modrinth. قد تختلف الإصدارات والتوافق حسب المود.</p>
+    <div id="javaCards" class="cards">
+      <div class="loading" data-i18n="loading">جارٍ تحميل صور المودات...</div>
+    </div>
+    <p id="javaEmpty" class="empty" data-i18n="noResults">لا توجد نتائج مطابقة.</p>
+  </div>
 </section>
+
 <section id="bedrock">
-<div class="section-head"><h2 id="bedrockTitle">Minecraft Bedrock</h2><p id="bedrockDesc">Bedrock Edition add-ons</p></div>
-<div class="cards" id="bedrockCards"></div>
+  <div class="container">
+    <h2 class="section-title" data-i18n="bedrockTitle">إضافات Minecraft Bedrock</h2>
+    <p class="section-sub" data-i18n="bedrockSub">اكتشف الإضافات والموارد من منصات المجتمع والمتجر الرسمي.</p>
+    <div id="bedrockCards" class="cards"></div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="container">
+    <h2 class="section-title" data-i18n="newsTitle">أخبار Minecraft</h2>
+    <p class="section-sub" data-i18n="newsSub">تابع الأخبار والتحديثات من المصادر الرسمية.</p>
+    <div class="split">
+      <article class="info-box">
+        <h3>📰 Minecraft.net</h3>
+        <p data-i18n="newsOfficial">الموقع الرسمي لأخبار Minecraft والإعلانات والمقالات.</p>
+        <a class="btn" href="https://www.minecraft.net/en-us/articles" target="_blank" rel="noopener">Minecraft Articles ↗</a>
+      </article>
+      <article class="info-box">
+        <h3>☕ Java Edition</h3>
+        <p data-i18n="javaNews">تابع إصدارات Java والتحديثات التجريبية وملاحظات الإصدارات.</p>
+        <a class="btn" href="https://www.minecraft.net/en-us/articles" target="_blank" rel="noopener" data-i18n="readNews">اقرأ الأخبار</a>
+      </article>
+      <article class="info-box">
+        <h3>📱 Bedrock Edition</h3>
+        <p data-i18n="bedrockNews">تابع أخبار Bedrock والتحديثات الجديدة من Minecraft.</p>
+        <a class="btn" href="https://www.minecraft.net/en-us/articles" target="_blank" rel="noopener" data-i18n="readNews">اقرأ الأخبار</a>
+      </article>
+    </div>
+    <p class="notice" style="margin-top:18px" data-i18n="newsNote">
+      تنبيه: هذه روابط لمصادر الأخبار الرسمية، وليست مقالات منشورة داخل Potato Mods.
+    </p>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="container">
+    <h2 class="section-title" data-i18n="videosTitle">فيديوهات Minecraft</h2>
+    <p class="section-sub" data-i18n="videosSub">شاهد الفيديوهات على قناة Minecraft الرسمية.</p>
+    <div class="info-box">
+      <h3>▶ Minecraft Official</h3>
+      <p data-i18n="videosText">فيديوهات وتحديثات ومقاطع رسمية من عالم Minecraft.</p>
+      <a class="btn" href="https://www.youtube.com/@minecraft" target="_blank" rel="noopener">YouTube ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="partners">
+  <div class="container">
+    <h2 class="section-title" data-i18n="partnersTitle">شركاؤنا ومجتمعنا</h2>
+    <p class="section-sub" data-i18n="partnersSub">هويتنا والمواقع الرسمية المرتبطة بعالم Minecraft.</p>
+
+    <div class="partner-grid">
+      <div class="partner">
+        <div class="partner-logo">🥔 Potato Mods</div>
+        <h3>Potato Mods</h3>
+        <small data-i18n="ourProject">مشروع وموقع مستقل من مجتمع Minecraft</small>
+      </div>
+
+      <div class="partner">
+        <div class="partner-logo">MOJANG</div>
+        <h3>Mojang Studios</h3>
+        <small data-i18n="mojangDesc">استوديو تطوير Minecraft</small>
+        <p><a href="https://www.minecraft.net/" target="_blank" rel="noopener">الموقع الرسمي ↗</a></p>
+      </div>
+
+      <div class="partner">
+        <div class="partner-logo">Microsoft</div>
+        <h3>Microsoft</h3>
+        <small data-i18n="microsoftDesc">شركة تقنية ومالكة Mojang Studios</small>
+        <p><a href="https://www.microsoft.com/" target="_blank" rel="noopener">الموقع الرسمي ↗</a></p>
+      </div>
+
+      <div class="partner">
+        <div class="partner-logo">Minecraft</div>
+        <h3>Minecraft</h3>
+        <small data-i18n="minecraftDesc">الموقع الرسمي للعبة</small>
+        <p><a href="https://www.minecraft.net/" target="_blank" rel="noopener">الموقع الرسمي ↗</a></p>
+      </div>
+    </div>
+
+    <p class="notice" style="margin-top:20px" data-i18n="disclaimer">
+      Potato Mods موقع مستقل وغير تابع رسميًا إلى Mojang Studios أو Microsoft. عرض الأسماء لا يعني وجود شراكة أو اعتماد رسمي.
+    </p>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="container">
+    <h2 class="section-title" data-i18n="resourcesTitle">مصادر مفيدة</h2>
+    <p class="section-sub" data-i18n="resourcesSub">منصات معروفة للبحث عن المودات والإضافات والموارد.</p>
+    <div class="cards">
+      <div class="card"><div class="card-body">
+        <h3>Modrinth</h3>
+        <p data-i18n="modrinthDesc">منصة للمودات وحزم الموارد والمشاريع.</p>
+        <a class="small-btn" href="https://modrinth.com/" target="_blank" rel="noopener">Visit Modrinth ↗</a>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <h3>CurseForge</h3>
+        <p data-i18n="curseDesc">منصة للبحث عن مودات Minecraft ومشاريع المجتمع.</p>
+        <a class="small-btn" href="https://www.curseforge.com/minecraft" target="_blank" rel="noopener">Visit CurseForge ↗</a>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <h3>MCPEDL</h3>
+        <p data-i18n="mcpedlDesc">موقع مجتمع لإضافات وموارد Bedrock.</p>
+        <a class="small-btn" href="https://mcpedl.com/" target="_blank" rel="noopener">Visit MCPEDL ↗</a>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <h3>Planet Minecraft</h3>
+        <p data-i18n="planetDesc">خرائط وتصاميم ومشاريع من مجتمع Minecraft.</p>
+        <a class="small-btn" href="https://www.planetminecraft.com/" target="_blank" rel="noopener">Visit Planet Minecraft ↗</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="container">
+    <h2 class="section-title" data-i18n="roadmapTitle">خطة تطوير Potato Mods</h2>
+    <div class="split">
+      <div class="info-box">
+        <h3>✅ <span data-i18n="done">موجود الآن</span></h3>
+        <p data-i18n="doneText">اللغات، البحث، تصفية Java وBedrock، روابط المصادر، وقسم الشركاء.</p>
+      </div>
+      <div class="info-box">
+        <h3>🚧 <span data-i18n="future">قادم مستقبلًا</span></h3>
+        <p data-i18n="futureText">صفحات تفاصيل موسعة، مقالات أخبار أصلية، ومراجعات المودات.</p>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
-<footer id="footerText">Potato Mods is a community directory. Downloads are provided by each project’s original page. Check compatibility and permissions before installing.</footer>
+
+<footer>
+  <div class="container">
+    <p><strong>🥔 Potato Mods</strong></p>
+    <p data-i18n="footerText">موقع مستقل لمحبي Minecraft.</p>
+    <p>© <span id="year"></span> Potato Mods</p>
+  </div>
+</footer>
+
+<div class="modal" id="welcomeModal">
+  <div class="modal-box">
+    <h2>🥔 Potato Mods</h2>
+    <p data-i18n="welcomeTitle">مرحبًا بك في Potato Mods!</p>
+    <p data-i18n="welcomeText">اكتشف مودات Minecraft Java وإضافات Bedrock والأخبار والمصادر.</p>
+    <button class="btn close" id="closeWelcome" data-i18n="enter">دخول الموقع</button>
+  </div>
+</div>
+
 <script>
-const items = [
-{type:"java",name:"Sodium",cat:"Performance",desc:"Improves rendering performance and frame rates.",url:"https://modrinth.com/mod/sodium"},
-{type:"java",name:"Iris Shaders",cat:"Graphics",desc:"Adds support for shader packs.",url:"https://modrinth.com/mod/iris"},
-{type:"java",name:"Lithium",cat:"Performance",desc:"Optimizes many game systems.",url:"https://modrinth.com/mod/lithium"},
-{type:"java",name:"FerriteCore",cat:"Performance",desc:"Reduces memory usage.",url:"https://modrinth.com/mod/ferrite-core"},
-{type:"java",name:"Mod Menu",cat:"Tools",desc:"View and manage installed mods.",url:"https://modrinth.com/mod/modmenu"},
-{type:"java",name:"Jade",cat:"Tools",desc:"Shows information about blocks and entities.",url:"https://modrinth.com/mod/jade"},
-{type:"java",name:"AppleSkin",cat:"Utility",desc:"Displays useful food and saturation information.",url:"https://modrinth.com/mod/appleskin"},
-{type:"java",name:"EMI",cat:"Utility",desc:"Browse items and recipes in-game.",url:"https://modrinth.com/mod/emi"},
-{type:"java",name:"JEI",cat:"Utility",desc:"A recipe and item viewing tool.",url:"https://www.curseforge.com/minecraft/mc-mods/jei"},
-{type:"java",name:"Xaero's Minimap",cat:"Maps",desc:"Adds a minimap with useful navigation features.",url:"https://modrinth.com/mod/xaeros-minimap"},
-{type:"java",name:"Xaero's World Map",cat:"Maps",desc:"Explore a map of your Minecraft world.",url:"https://modrinth.com/mod/xaeros-world-map"},
-{type:"java",name:"Create",cat:"Building",desc:"Build moving machines and mechanical systems.",url:"https://modrinth.com/mod/create"},
-{type:"java",name:"Terralith",cat:"World Generation",desc:"Adds many new Overworld biomes.",url:"https://modrinth.com/datapack/terralith"},
-{type:"java",name:"Biomes O' Plenty",cat:"World Generation",desc:"Expands world generation with new biomes.",url:"https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty"},
-{type:"java",name:"Farmer's Delight",cat:"Food",desc:"Adds cooking, crops and food-related features.",url:"https://modrinth.com/mod/farmers-delight"},
-{type:"java",name:"Waystones",cat:"Travel",desc:"Adds waystones for convenient travel.",url:"https://www.curseforge.com/minecraft/mc-mods/waystones"},
-{type:"java",name:"Supplementaries",cat:"Decoration",desc:"Adds decorative and practical building items.",url:"https://modrinth.com/mod/supplementaries"},
-{type:"java",name:"YUNG's Better Dungeons",cat:"Adventure",desc:"Overhauls dungeon structures.",url:"https://www.curseforge.com/minecraft/mc-mods/yungs-better-dungeons"},
-{type:"java",name:"ImmediatelyFast",cat:"Performance",desc:"Improves rendering performance.",url:"https://modrinth.com/mod/immediatelyfast"},
-{type:"java",name:"Entity Culling",cat:"Performance",desc:"Avoids rendering entities that cannot be seen.",url:"https://modrinth.com/mod/entityculling"},
-{type:"bedrock",name:"Ore UI",cat:"Utility",desc:"Browse Bedrock add-ons and resource packs.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Marketplace Add-ons",cat:"Add-ons",desc:"Explore official add-ons for Minecraft Bedrock.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Texture Packs",cat:"Graphics",desc:"Find resource packs for Bedrock Edition.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"World Templates",cat:"Worlds",desc:"Discover new worlds and experiences.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Skin Packs",cat:"Skins",desc:"Explore character skin packs.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Furniture Add-ons",cat:"Building",desc:"Search for furniture add-ons in the Marketplace.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Mob Add-ons",cat:"Mobs",desc:"Find add-ons that add or change creatures.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Adventure Add-ons",cat:"Adventure",desc:"Discover new adventure experiences.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Survival Add-ons",cat:"Survival",desc:"Find add-ons for survival gameplay.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Building Add-ons",cat:"Building",desc:"Explore tools and content for builders.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Magic Add-ons",cat:"Magic",desc:"Search magical content for Bedrock.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Vehicle Add-ons",cat:"Vehicles",desc:"Find vehicle content for Bedrock Edition.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Tools Add-ons",cat:"Tools",desc:"Explore extra tools and utilities.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Nature Add-ons",cat:"Nature",desc:"Discover nature-themed Bedrock content.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Ore Boost V2",cat:"Mining",desc:"Browse mining add-ons for Bedrock Edition.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Effortless Building",cat:"Building",desc:"Browse building add-ons for Bedrock Edition.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Animals Add-ons",cat:"Animals",desc:"Find animal-themed add-ons.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Decoration Add-ons",cat:"Decoration",desc:"Find decorative content for your worlds.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Food Add-ons",cat:"Food",desc:"Discover food and farming content.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"Utility Add-ons",cat:"Utility",desc:"Explore useful Bedrock add-ons.",url:"https://www.minecraft.net/en-us/marketplace"},
-{type:"bedrock",name:"World Generation Add-ons",cat:"Worlds",desc:"Find new world and terrain experiences.",url:"https://www.minecraft.net/en-us/marketplace"}
-];
-const words={
-en:{lang:"Language",hero:"Discover Minecraft Java mods and Bedrock add-ons in one place. Search by name or feature.",search:"Search for a mod or add-on...",btn:"Search",all:"All",java:"Java only",bedrock:"Bedrock only",jd:"Java Edition mods",bd:"Bedrock Edition add-ons",download:"Open download page",source:"Official project page",foot:"Potato Mods is a community directory. Downloads are provided by each project’s original page. Check compatibility and permissions before installing."},
-ar:{lang:"اللغة",hero:"اكتشف مودات Java وإضافات Bedrock في مكان واحد. ابحث بالاسم أو الوظيفة.",search:"ابحث عن مود أو إضافة...",btn:"بحث",all:"الكل",java:"Java فقط",bedrock:"Bedrock فقط",jd:"مودات إصدار Java",bd:"إضافات إصدار Bedrock",download:"فتح صفحة التحميل",source:"صفحة المشروع الرسمية",foot:"Potato Mods دليل مجتمعي. تتم عمليات التنزيل من صفحات المشاريع الأصلية. تحقق من التوافق والأذونات قبل التثبيت."},
-fr:{lang:"Langue",hero:"Découvrez les mods Minecraft Java et les add-ons Bedrock au même endroit. Recherchez par nom ou fonction.",search:"Rechercher un mod ou add-on...",btn:"Rechercher",all:"Tout",java:"Java uniquement",bedrock:"Bedrock uniquement",jd:"Mods de l’édition Java",bd:"Add-ons de l’édition Bedrock",download:"Ouvrir la page de téléchargement",source:"Page officielle du projet",foot:"Potato Mods est un répertoire communautaire. Les téléchargements sont fournis par les pages originales des projets. Vérifiez la compatibilité et les autorisations avant l’installation."}
+const translations = {
+ar:{
+navJava:"مودات Java",navBedrock:"إضافات Bedrock",navNews:"الأخبار",navPartners:"شركاؤنا",navResources:"المصادر",
+heroText:"اكتشف أفضل مودات Minecraft Java وإضافات Bedrock والأخبار والمصادر في مكان واحد.",
+explore:"اكتشف المودات",latestNews:"آخر الأخبار",searchPlaceholder:"ابحث عن مود أو إضافة...",
+all:"الكل",javaTitle:"مودات Minecraft Java",javaSub:"مشاريع حقيقية من Modrinth. قد تختلف الإصدارات والتوافق حسب المود.",
+loading:"جارٍ تحميل صور المودات...",noResults:"لا توجد نتائج مطابقة.",
+bedrockTitle:"إضافات Minecraft Bedrock",bedrockSub:"اكتشف الإضافات والموارد من منصات المجتمع والمتجر الرسمي.",
+newsTitle:"أخبار Minecraft",newsSub:"تابع الأخبار والتحديثات من المصادر الرسمية.",
+newsOfficial:"الموقع الرسمي لأخبار Minecraft والإعلانات والمقالات.",
+javaNews:"تابع إصدارات Java والتحديثات التجريبية وملاحظات الإصدارات.",
+bedrockNews:"تابع أخبار Bedrock والتحديثات الجديدة من Minecraft.",
+readNews:"اقرأ الأخبار",
+newsNote:"تنبيه: هذه روابط لمصادر الأخبار الرسمية، وليست مقالات منشورة داخل Potato Mods.",
+videosTitle:"فيديوهات Minecraft",videosSub:"شاهد الفيديوهات على قناة Minecraft الرسمية.",
+videosText:"فيديوهات وتحديثات ومقاطع رسمية من عالم Minecraft.",
+partnersTitle:"شركاؤنا ومجتمعنا",partnersSub:"هويتنا والمواقع الرسمية المرتبطة بعالم Minecraft.",
+ourProject:"مشروع وموقع مستقل من مجتمع Minecraft",mojangDesc:"استوديو تطوير Minecraft",
+microsoftDesc:"شركة تقنية ومالكة Mojang Studios",minecraftDesc:"الموقع الرسمي للعبة",
+disclaimer:"Potato Mods موقع مستقل وغير تابع رسميًا إلى Mojang Studios أو Microsoft. عرض الأسماء لا يعني وجود شراكة أو اعتماد رسمي.",
+resourcesTitle:"مصادر مفيدة",resourcesSub:"منصات معروفة للبحث عن المودات والإضافات والموارد.",
+modrinthDesc:"منصة للمودات وحزم الموارد والمشاريع.",curseDesc:"منصة للبحث عن مودات Minecraft ومشاريع المجتمع.",
+mcpedlDesc:"موقع مجتمع لإضافات وموارد Bedrock.",planetDesc:"خرائط وتصاميم ومشاريع من مجتمع Minecraft.",
+roadmapTitle:"خطة تطوير Potato Mods",done:"موجود الآن",doneText:"اللغات، البحث، تصفية Java وBedrock، روابط المصادر، وقسم الشركاء.",
+future:"قادم مستقبلًا",futureText:"صفحات تفاصيل موسعة، مقالات أخبار أصلية، ومراجعات المودات.",
+footerText:"موقع مستقل لمحبي Minecraft.",welcomeTitle:"مرحبًا بك في Potato Mods!",
+welcomeText:"اكتشف مودات Minecraft Java وإضافات Bedrock والأخبار والمصادر.",enter:"دخول الموقع",
+download:"صفحة المشروع",source:"CurseForge",market:"اكتشف الإضافات",details:"المصدر"
+},
+en:{
+navJava:"Java Mods",navBedrock:"Bedrock Add-ons",navNews:"News",navPartners:"Partners",navResources:"Resources",
+heroText:"Discover Minecraft Java mods, Bedrock add-ons, news and useful resources in one place.",
+explore:"Explore Mods",latestNews:"Latest News",searchPlaceholder:"Search for a mod or add-on...",
+all:"All",javaTitle:"Minecraft Java Mods",javaSub:"Real projects from Modrinth. Versions and compatibility may vary by project.",
+loading:"Loading mod images...",noResults:"No matching results.",
+bedrockTitle:"Minecraft Bedrock Add-ons",bedrockSub:"Discover add-ons and resources from community platforms and the official store.",
+newsTitle:"Minecraft News",newsSub:"Follow news and updates from official sources.",
+newsOfficial:"The official Minecraft website for news, announcements and articles.",
+javaNews:"Follow Java releases, snapshots and release notes.",
+bedrockNews:"Follow Bedrock news and new Minecraft updates.",readNews:"Read News",
+newsNote:"Note: These are links to official news sources, not articles published inside Potato Mods.",
+videosTitle:"Minecraft Videos",videosSub:"Watch videos on the official Minecraft channel.",
+videosText:"Official videos, updates and clips from the world of Minecraft.",
+partnersTitle:"Partners & Community",partnersSub:"Our identity and official websites related to Minecraft.",
+ourProject:"An independent Minecraft community website and project",mojangDesc:"Minecraft development studio",
+microsoftDesc:"Technology company and owner of Mojang Studios",minecraftDesc:"The official game website",
+disclaimer:"Potato Mods is an independent website and is not officially affiliated with Mojang Studios or Microsoft. Displaying their names does not imply partnership or endorsement.",
+resourcesTitle:"Useful Resources",resourcesSub:"Known platforms for finding mods, add-ons and resources.",
+modrinthDesc:"A platform for mods, resource packs and projects.",curseDesc:"A platform for Minecraft mods and community projects.",
+mcpedlDesc:"A community website for Bedrock add-ons and resources.",planetDesc:"Maps, builds and projects from the Minecraft community.",
+roadmapTitle:"Potato Mods Roadmap",done:"Available now",doneText:"Languages, search, Java and Bedrock filters, source links and partner section.",
+future:"Coming later",futureText:"Expanded detail pages, original news articles and mod reviews.",
+footerText:"An independent website for Minecraft fans.",welcomeTitle:"Welcome to Potato Mods!",
+welcomeText:"Discover Minecraft Java mods, Bedrock add-ons, news and resources.",enter:"Enter Website",
+download:"Project Page",source:"CurseForge",market:"Explore Add-ons",details:"Source"
+},
+fr:{
+navJava:"Mods Java",navBedrock:"Add-ons Bedrock",navNews:"Actualités",navPartners:"Partenaires",navResources:"Ressources",
+heroText:"Découvrez les mods Minecraft Java, les add-ons Bedrock, les actualités et des ressources utiles.",
+explore:"Explorer les mods",latestNews:"Actualités",searchPlaceholder:"Rechercher un mod ou add-on...",
+all:"Tout",javaTitle:"Mods Minecraft Java",javaSub:"Projets réels de Modrinth. Les versions et la compatibilité peuvent varier.",
+loading:"Chargement des images...",noResults:"Aucun résultat correspondant.",
+bedrockTitle:"Add-ons Minecraft Bedrock",bedrockSub:"Découvrez des add-ons et ressources communautaires et officiels.",
+newsTitle:"Actualités Minecraft",newsSub:"Suivez les actualités depuis les sources officielles.",
+newsOfficial:"Le site officiel de Minecraft pour les actualités et les annonces.",
+javaNews:"Suivez les versions Java, snapshots et notes de version.",
+bedrockNews:"Suivez les actualités et mises à jour de Bedrock.",readNews:"Lire les actualités",
+newsNote:"Remarque : ces liens mènent aux sources officielles, pas à des articles publiés sur Potato Mods.",
+videosTitle:"Vidéos Minecraft",videosSub:"Regardez la chaîne officielle Minecraft.",
+videosText:"Vidéos et actualités officielles de Minecraft.",
+partnersTitle:"Partenaires et communauté",partnersSub:"Notre identité et les sites officiels liés à Minecraft.",
+ourProject:"Un site et projet indépendant de la communauté Minecraft",mojangDesc:"Studio de développement de Minecraft",
+microsoftDesc:"Entreprise technologique et propriétaire de Mojang Studios",minecraftDesc:"Le site officiel du jeu",
+disclaimer:"Potato Mods est un site indépendant et n'est pas officiellement affilié à Mojang Studios ou Microsoft. L'affichage de leurs noms ne signifie pas un partenariat ou une approbation.",
+resourcesTitle:"Ressources utiles",resourcesSub:"Plateformes connues pour trouver des mods, add-ons et ressources.",
+modrinthDesc:"Une plateforme de mods, packs de ressources et projets.",curseDesc:"Une plateforme de mods Minecraft et projets communautaires.",
+mcpedlDesc:"Un site communautaire pour les add-ons et ressources Bedrock.",planetDesc:"Cartes, constructions et projets de la communauté Minecraft.",
+roadmapTitle:"Feuille de route Potato Mods",done:"Disponible",doneText:"Langues, recherche, filtres Java et Bedrock, liens et partenaires.",
+future:"À venir",futureText:"Pages détaillées, articles originaux et tests de mods.",
+footerText:"Un site indépendant pour les fans de Minecraft.",welcomeTitle:"Bienvenue sur Potato Mods !",
+welcomeText:"Découvrez les mods Java, add-ons Bedrock, actualités et ressources.",enter:"Entrer sur le site",
+download:"Page du projet",source:"CurseForge",market:"Explorer les add-ons",details:"Source"
+}
 };
-let filter="all";
-function render(){
- const q=document.getElementById("search").value.trim().toLowerCase();
- for(const type of ["java","bedrock"]){
-  const root=document.getElementById(type+"Cards");root.innerHTML="";
-  items.filter(x=>x.type===type && (filter==="all"||filter===type) && (!q||(x.name+" "+x.cat+" "+x.desc).toLowerCase().includes(q))).forEach(x=>{
-   const card=document.createElement("article");card.className="card";
-   card.innerHTML=`<div class="meta"><span class="tag"></span><span>${type.toUpperCase()}</span></div><h3></h3><p></p><a class="download" target="_blank" rel="noopener noreferrer"></a><a class="source" target="_blank" rel="noopener noreferrer"></a>`;
-   card.querySelector(".tag").textContent=x.cat;card.querySelector("h3").textContent=x.name;card.querySelector("p").textContent=x.desc;
-   card.querySelector(".download").href=x.url;card.querySelector(".source").href=x.url;
-   card.querySelector(".download").textContent=words[document.documentElement.lang].download;
-   card.querySelector(".source").textContent=words[document.documentElement.lang].source;root.appendChild(card);
+
+const javaMods = [
+["sodium","Sodium","Performance","تحسين أداء اللعبة ورفع معدل الإطارات."],
+["iris","Iris Shaders","Graphics","تشغيل الشيدرز في Minecraft."],
+["lithium","Lithium","Performance","تحسين أداء اللعبة من جهة الخادم."],
+["ferrite-core","FerriteCore","Optimization","تقليل استهلاك الذاكرة."],
+["modmenu","Mod Menu","Utility","عرض المودات المثبتة وإعداداتها."],
+["jade","Jade","Utility","عرض معلومات الكتل والكائنات."],
+["appleskin","AppleSkin","Food","معلومات إضافية عن الطعام والجوع."],
+["emi","EMI","Utility","عرض وصفات التصنيع والعناصر."],
+["jei","JEI","Utility","البحث عن العناصر ووصفات التصنيع."],
+["xaeros-minimap","Xaero's Minimap","Map","خريطة مصغرة أثناء اللعب."],
+["xaeros-world-map","Xaero's World Map","Map","خريطة للعالم الذي تستكشفه."],
+["create","Create","Technology","آلات وأنظمة ميكانيكية إبداعية."],
+["terralith","Terralith","World Generation","تنويع تضاريس العالم."],
+["biomes-o-plenty","Biomes O' Plenty","World Generation","إضافة مناطق حيوية متنوعة."],
+["farmers-delight","Farmer's Delight","Food","محتوى جديد للزراعة والطهي."],
+["waystones","Waystones","Travel","وسائل انتقال بين المواقع."],
+["supplementaries","Supplementaries","Decoration","عناصر وديكورات إضافية."],
+["entityculling","Entity Culling","Performance","تحسين الأداء عبر تقليل عرض الكيانات غير المرئية."]
+];
+
+const bedrockItems = [
+["Add-ons","إضافات تغيّر طريقة اللعب وتضيف محتوى جديدًا.","https://mcpedl.com/category/mods/"],
+["Texture Packs","حزم لتغيير مظهر اللعبة والواجهات.","https://mcpedl.com/category/texture-packs/"],
+["Shaders & Visuals","موارد لتحسين أو تغيير المظهر البصري.","https://mcpedl.com/"],
+["Maps","عوالم ومغامرات من مجتمع Bedrock.","https://mcpedl.com/category/maps/"],
+["Skins","أشكال وشخصيات للاعب.","https://mcpedl.com/category/skins/"],
+["Marketplace","المتجر الرسمي لإضافات ومحتوى Bedrock.","https://www.minecraft.net/en-us/marketplace"]
+];
+
+let currentFilter = "all";
+let currentLanguage = "ar";
+
+function t(key){
+  return translations[currentLanguage][key] || translations.en[key] || key;
+}
+
+function applyLanguage(lang){
+  currentLanguage = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.dataset.i18n;
+    if(translations[lang][key]) el.textContent = translations[lang][key];
   });
-  document.getElementById(type).hidden=filter!=="all"&&filter!==type;
- }
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+    const key = el.dataset.i18nPlaceholder;
+    if(translations[lang][key]) el.placeholder = translations[lang][key];
+  });
+
+  document.querySelectorAll(".small-btn[data-label-key]").forEach(el=>{
+    el.textContent = t(el.dataset.labelKey);
+  });
 }
-document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));render()}));
-document.getElementById("search").addEventListener("input",render);document.getElementById("searchBtn").addEventListener("click",render);
-document.getElementById("language").addEventListener("change",e=>{
- const lang=e.target.value,w=words[lang];document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
- document.getElementById("langLabel").textContent=w.lang;document.getElementById("heroText").textContent=w.hero;
- document.getElementById("search").placeholder=w.search;document.getElementById("searchBtn").textContent=w.btn;
- document.getElementById("allBtn").textContent=w.all;document.getElementById("javaBtn").textContent=w.java;document.getElementById("bedrockBtn").textContent=w.bedrock;
- document.getElementById("javaDesc").textContent=w.jd;document.getElementById("bedrockDesc").textContent=w.bd;document.getElementById("footerText").textContent=w.foot;render();
+
+function makeJavaCard(mod){
+  const [slug,name,category,description] = mod;
+  const card = document.createElement("article");
+  card.className = "card searchable";
+  card.dataset.type = "java";
+  card.dataset.name = name.toLowerCase();
+
+  const img = document.createElement("img");
+  img.className = "card-img";
+  img.alt = name;
+  img.loading = "lazy";
+  img.src = "https://cdn.modrinth.com/placeholder.png";
+  img.onerror = ()=>{img.style.display="none"};
+
+  const body = document.createElement("div");
+  body.className = "card-body";
+
+  const title = document.createElement("h3");
+  title.textContent = name;
+
+  const desc = document.createElement("p");
+  desc.textContent = description;
+
+  const actions = document.createElement("div");
+  actions.className = "card-actions";
+
+  const modrinth = document.createElement("a");
+  modrinth.className = "small-btn";
+  modrinth.href = "https://modrinth.com/mod/" + encodeURIComponent(slug);
+  modrinth.target = "_blank";
+  modrinth.rel = "noopener";
+  modrinth.textContent = t("download");
+
+  const curse = document.createElement("a");
+  curse.className = "small-btn alt";
+  curse.href = "https://www.curseforge.com/minecraft/search?class=mc-mods&search=" + encodeURIComponent(name);
+  curse.target = "_blank";
+  curse.rel = "noopener";
+  curse.textContent = t("source");
+
+  actions.append(modrinth,curse);
+  body.append(title,desc,actions);
+  card.append(img,body);
+
+  fetch("https://api.modrinth.com/v2/project/" + encodeURIComponent(slug))
+    .then(response=>{
+      if(!response.ok) throw new Error("Project unavailable");
+      return response.json();
+    })
+    .then(data=>{
+      if(data.icon_url) img.src = data.icon_url;
+      if(data.title) title.textContent = data.title;
+      if(data.description) desc.textContent = data.description;
+      card.dataset.name = (data.title || name).toLowerCase();
+    })
+    .catch(()=>{});
+
+  return card;
+}
+
+function renderJava(){
+  const container = document.getElementById("javaCards");
+  container.innerHTML = "";
+  javaMods.forEach(mod=>container.appendChild(makeJavaCard(mod)));
+  applyFilters();
+}
+
+function renderBedrock(){
+  const container = document.getElementById("bedrockCards");
+  container.innerHTML = "";
+
+  bedrockItems.forEach(item=>{
+    const [name,description,url] = item;
+    const card = document.createElement("article");
+    card.className = "card searchable";
+    card.dataset.type = "bedrock";
+    card.dataset.name = name.toLowerCase();
+
+    const body = document.createElement("div");
+    body.className = "card-body";
+
+    const title = document.createElement("h3");
+    title.textContent = "🧱 " + name;
+
+    const desc = document.createElement("p");
+    desc.textContent = description;
+
+    const link = document.createElement("a");
+    link.className = "small-btn";
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = t("market");
+
+    body.append(title,desc,link);
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+}
+
+function applyFilters(){
+  const query = document.getElementById("search").value.trim().toLowerCase();
+  let visible = 0;
+
+  document.querySelectorAll(".searchable").forEach(card=>{
+    const matchesType = currentFilter === "all" || card.dataset.type === currentFilter;
+    const matchesSearch = !query || card.dataset.name.includes(query) || card.textContent.toLowerCase().includes(query);
+    const show = matchesType && matchesSearch;
+    card.style.display = show ? "" : "none";
+    if(show) visible++;
+  });
+
+  document.getElementById("javaEmpty").style.display =
+    visible === 0 ? "block" : "none";
+}
+
+document.getElementById("search").addEventListener("input",applyFilters);
+
+document.querySelectorAll(".filter").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+    button.classList.add("active");
+    currentFilter = button.dataset.filter;
+    applyFilters();
+  });
 });
-render();
-</script>
- <style>
-.extra-section{margin:45px 0}
-.extra-section h2{color:#c9f3a6;border-bottom:1px solid #3a5140;padding-bottom:10px}
-.extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.extra-card{background:#1b2d22;border:1px solid #3a5140;border-radius:18px;padding:20px}
-.extra-card h3{color:#c9f3a6}
-.extra-card p{color:#b8c7b9}
-.extra-card a{display:inline-block;margin:5px;color:#c9f3a6}
-.extra-button{display:inline-block;background:#80d84f;color:#102012;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:bold}
-#potatoWelcome{position:fixed;inset:0;background:#000b;z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
-#potatoWelcome .welcome-box{background:#193522;border:1px solid #80d84f;border-radius:20px;padding:25px;max-width:450px;text-align:center}
-#potatoWelcome button{background:#80d84f;color:#102012;border:0;padding:12px 25px;border-radius:10px;font-weight:bold}
-</style>
 
-<section class="extra-section" id="news">
-<h2>📰 أخبار Minecraft</h2>
-<div class="extra-grid">
-<div class="extra-card">
-<h3>Java Edition</h3>
-<p>قسم أخبار وتحديثات Minecraft Java.</p>
-<a href="https://www.minecraft.net/en-us/articles">أخبار Minecraft الرسمية</a>
-</div>
-<div class="extra-card">
-<h3>Bedrock Edition</h3>
-<p>قسم أخبار وتحديثات Minecraft Bedrock.</p>
-<a href="https://www.minecraft.net/en-us/updates">آخر التحديثات الرسمية</a>
-</div>
-</div>
-</section>
+document.getElementById("language").addEventListener("change",event=>{
+  applyLanguage(event.target.value);
+});
 
-<section class="extra-section" id="official">
-<h2>🎮 تحميل Minecraft الرسمي</h2>
-<div class="extra-grid">
-<div class="extra-card">
-<h3>Android</h3>
-<p>صفحة Minecraft الرسمية على Google Play.</p>
-<a class="extra-button" href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">Google Play</a>
-</div>
-<div class="extra-card">
-<h3>Windows</h3>
-<p>تحميل Minecraft Launcher الرسمي.</p>
-<a class="extra-button" href="https://www.minecraft.net/download" target="_blank">تحميل Windows</a>
-</div>
-<div class="extra-card">
-<h3>Xbox</h3>
-<p>صفحة Minecraft الرسمية على Xbox.</p>
-<a class="extra-button" href="https://www.xbox.com/games/store/minecraft/9MVXMVT8ZKWC" target="_blank">Xbox Store</a>
-</div>
-</div>
-</section>
+document.getElementById("year").textContent = new Date().getFullYear();
 
-<section class="extra-section" id="community">
-<h2>👥 مجتمع Potato Mods</h2>
-<div class="extra-grid">
-<div class="extra-card">
-<h3>إرسال مودات المجتمع</h3>
-<p>قريباً: سيتمكن الأعضاء من اقتراح موداتهم لمراجعتها قبل نشرها.</p>
-</div>
-<div class="extra-card">
-<h3>⭐ النقاط والمكافآت</h3>
-<p>قريباً: نظام نقاط وشارات للأعضاء.</p>
-</div>
-</div>
-</section>
+document.getElementById("closeWelcome").addEventListener("click",()=>{
+  document.getElementById("welcomeModal").classList.remove("show");
+  try{sessionStorage.setItem("potatoWelcomeSeen","yes")}catch(e){}
+});
 
-<section class="extra-section" id="resources">
-<h2>🌐 مواقع Minecraft المفيدة</h2>
-<div class="extra-grid">
-<div class="extra-card">
-<h3>Modrinth</h3>
-<a href="https://modrinth.com/" target="_blank">زيارة الموقع</a>
-</div>
-<div class="extra-card">
-<h3>CurseForge</h3>
-<a href="https://www.curseforge.com/minecraft" target="_blank">زيارة الموقع</a>
-</div>
-<div class="extra-card">
-<h3>MCPEDL</h3>
-<a href="https://mcpedl.org/" target="_blank">زيارة الموقع</a>
-</div>
-<div class="extra-card">
-<h3>Planet Minecraft</h3>
-<a href="https://www.planetminecraft.com/" target="_blank">زيارة الموقع</a>
-</div>
-<div class="extra-card">
-<h3>Minecraft الرسمي</h3>
-<a href="https://www.minecraft.net/" target="_blank">زيارة الموقع</a>
-</div>
-</div>
-</section>
-
-<section class="extra-section" id="roadmap">
-<h2>🗺️ خارطة تطوير Potato Mods</h2>
-<div class="extra-grid">
-<div class="extra-card">
-<h3>المرحلة الأولى</h3>
-<p>إضافة الأخبار والمواقع المفيدة والتحميل الرسمي.</p>
-</div>
-<div class="extra-card">
-<h3>المرحلة الثانية</h3>
-<p>إنشاء حسابات الأعضاء ونظام النقاط.</p>
-</div>
-<div class="extra-card">
-<h3>المرحلة الثالثة</h3>
-<p>استقبال مودات المجتمع ومراجعتها.</p>
-</div>
-<div class="extra-card">
-<h3>المرحلة الرابعة</h3>
-<p>تطوير الإشعارات والتحديثات التلقائية.</p>
-</div>
-</div>
-</section>
-
-<div id="potatoWelcome">
-<div class="welcome-box">
-<h2>🥔 مرحباً بك في Potato Mods!</h2>
-<p>نعمل على تطوير الموقع وإضافة الأخبار والمكافآت ومواقع Minecraft المفيدة.</p>
-<p>تابع خارطة التطوير لمعرفة الميزات القادمة.</p>
-<button onclick="document.getElementById('potatoWelcome').style.display='none'">متابعة الموقع</button>
-</div>
-</div>
-
-<script>
-if(!sessionStorage.getItem("potatoWelcomeSeen")){
-document.getElementById("potatoWelcome").style.display="flex";
-sessionStorage.setItem("potatoWelcomeSeen","yes");
+try{
+  if(!sessionStorage.getItem("potatoWelcomeSeen")){
+    document.getElementById("welcomeModal").classList.add("show");
+  }
+}catch(e){
+  document.getElementById("welcomeModal").classList.add("show");
 }
+
+renderJava();
+renderBedrock();
+applyLanguage("ar");
 </script>
-</body></html>
+
+</body>
+</html>
+
